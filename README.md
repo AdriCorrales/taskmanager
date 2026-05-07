@@ -34,14 +34,14 @@ docker run --detach --env MYSQL_ROOT_PASSWORD=taskpassword --env MYSQL_USER=task
 En la carpeta /postman se puede encontrar una colección de Postman con los siguientes endpoints:
 
 ### Users
-GET /users
-POST /users
-GET /users/{id}
-DELETE /users/{id}
+- GET /users
+- POST /users
+- GET /users/{id}
+- DELETE /users/{id}
 
 ### Tasks 
-GET /tasks
-GET /users/{id}/tasks
-GET /users/{id}/tasks/{id}
-POST /users/{id}/tasks
-DELETE /tasks/{id}
+- GET /tasks
+- GET /users/{id}/tasks
+- GET /users/{id}/tasks/{id}
+- POST /users/{id}/tasks
+- DELETE /tasks/{id}
