@@ -38,10 +38,13 @@ In `/postman` folder you can find a Postman collection with the following endpoi
 `POST /users`  
 `GET /users/{id}`  
 `DELETE /users/{id}`  
+`PUT /users/{id}`
 
 ### Tasks 
-`GET /tasks`  
+`GET /tasks`
+`GET /tasks/{id}`  
 `GET /users/{id}/tasks`  
 `GET /users/{id}/tasks/{id}`  
 `POST /users/{id}/tasks`  
 `DELETE /tasks/{id}`  
+`PUT /tasks/{id}`
