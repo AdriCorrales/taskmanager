@@ -27,7 +27,7 @@ public class TaskService {
 	public Task findById(int id) {
 		Optional<Task> taskOptional = taskRepository.findById(id);
 		if (taskOptional.isEmpty()) {
-			throw new TaskNotFoundException("Task not found: " + id);
+			throw new TaskNotFoundException("Task with ID " + id + " not found.");
 		}
 		return taskOptional.get();
 	}
@@ -36,7 +36,7 @@ public class TaskService {
 		Optional<User> user = userRepository.findById(userId);
 		
 		if (user.isEmpty()) {
-			throw new UserNotFoundException("User not found: " + userId);
+			throw new UserNotFoundException("User with ID " + userId + " not found.");
 		} 
 		
 		task.setUser(user.get());
@@ -45,7 +45,7 @@ public class TaskService {
 	
 	public void delete(int id) {
 		if (!taskRepository.existsById(id)) {
-            throw new UserNotFoundException("Task not found: " + id);
+            throw new TaskNotFoundException("Task with ID " + id + " not found.");
         }
         taskRepository.deleteById(id);
 	}
@@ -54,7 +54,7 @@ public class TaskService {
 		Optional<User> user = userRepository.findById(userId);
 		
 		if (user.isEmpty()) {
-			throw new UserNotFoundException("User not found: " + userId);
+			throw new UserNotFoundException("User with ID " + userId + " not found.");
 		}
 		
 		return user.get().getTasks();
@@ -64,7 +64,7 @@ public class TaskService {
 		Optional<Task> task = taskRepository.findByIdAndUserId(taskId, userId);
 		
 		if (task.isEmpty()) {
-			throw new UserNotFoundException("Task not found: " + taskId + " for User: " + userId);
+			throw new TaskNotFoundException("Task with ID " + taskId + " not found for user with ID " + userId + ".");
 		} 
 				
 		return task.get();
@@ -74,7 +74,7 @@ public class TaskService {
 		Optional<Task> existingTask = taskRepository.findById(id);
 		
 		if (existingTask.isEmpty()) {
-			throw new TaskNotFoundException("Task not found: " + id);
+			throw new TaskNotFoundException("Task with ID " + id + " not found.");
 		}
 		
 		Task updatedTask = existingTask.get();

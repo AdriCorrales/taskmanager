@@ -23,7 +23,7 @@ public class UserService {
 		Optional<User> user = userRepository.findById(id);
 		
 		if (user.isEmpty()) {
-			throw new UserNotFoundException("User not found:  " + id);
+			throw new UserNotFoundException("User with ID " + id + " not found.");
 		}
 		
 		return user.get();
@@ -35,9 +35,26 @@ public class UserService {
 
     public void delete(int id) {
         if (!userRepository.existsById(id)) {
-            throw new UserNotFoundException("User not found: " + id);
+            throw new UserNotFoundException("User with ID " + id + " not found.");
         }
         userRepository.deleteById(id);
     }
-	
+
+    public User updateUser(User user, int id) {
+        Optional<User> existingUser = userRepository.findById(id);
+        
+        if (existingUser.isEmpty()) {
+            throw new UserNotFoundException("User with ID " + id + " not found.");
+        }
+        
+        User updatedUser = existingUser.get();
+        if (user.getUsername() != null) {
+            updatedUser.setUsername(user.getUsername());
+        }
+        if (user.getPassword() != null) {
+            updatedUser.setPassword(user.getPassword());
+        }
+        
+        return userRepository.save(updatedUser);
+    }
 }
