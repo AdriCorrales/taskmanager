@@ -69,4 +69,25 @@ public class TaskService {
 				
 		return task.get();
 	}
+
+	public Task updateTask(Task task, int id) {
+		Optional<Task> existingTask = taskRepository.findById(id);
+		
+		if (existingTask.isEmpty()) {
+			throw new TaskNotFoundException("Task not found: " + id);
+		}
+		
+		Task updatedTask = existingTask.get();
+		if (task.getTitle() != null) {
+			updatedTask.setTitle(task.getTitle());
+		}
+		if (task.getDescription() != null) {
+			updatedTask.setDescription(task.getDescription());
+		}
+		if (task.getStatus() != null) {
+			updatedTask.setStatus(task.getStatus());
+		}
+		
+		return taskRepository.save(updatedTask);
+	}
 }
