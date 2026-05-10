@@ -134,6 +134,49 @@
           "response": []
         },
         {
+          "name": "Update User",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "password",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "username",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"Rubén\", \r\n    \"password\": \"juanitovalderrama\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/users/52",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                "52"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Delete User",
           "request": {
             "auth": {
@@ -264,6 +307,47 @@
           "response": []
         },
         {
+          "name": "Get Task By ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "password",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "username",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"Juan\",\r\n    \"password\": \"1234\"\r\n}"
+            },
+            "url": {
+              "raw": "localhost:8080/tasks/2",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Delete Task",
           "request": {
             "auth": {
@@ -302,7 +386,7 @@
           "response": []
         },
         {
-          "name": "Get Tasks By Id And User",
+          "name": "Get Task By Id And User",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -366,7 +450,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"title\": \"PROGRAMAR SPRING\",\r\n    \"description\": \"Respetar la arquitectura del Rest Controller\"\r\n}",
+              "raw": "{\r\n    \"title\": \"MEJORAR EN DATA\",\r\n    \"description\": \"Con Python\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -383,6 +467,90 @@
                 "users",
                 "2",
                 "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Task By ID",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "password",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "username",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"description\": \"supertarea\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/tasks/2",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Task By ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "password",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "username",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "localhost:8080/tasks/2",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "2"
               ]
             }
           },
