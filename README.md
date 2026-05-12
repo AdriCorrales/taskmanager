@@ -48,3 +48,4 @@ In `/postman` folder you can find a Postman collection with the following endpoi
 `POST /users/{id}/tasks`  
 `DELETE /tasks/{id}`  
 `PUT /tasks/{id}`
+`PUT /tasks/{id}/status`

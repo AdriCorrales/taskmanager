@@ -516,6 +516,50 @@
           "response": []
         },
         {
+          "name": "Update Task Status",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "password",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "username",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"status\": \"IN_PROGRESS\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/tasks/2/status",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "tasks",
+                "2",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Get Task By ID",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
