@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.adrian.taskmanager.jpa.TaskRepository;
 import com.adrian.taskmanager.jpa.UserRepository;
+import com.adrian.taskmanager.task.dto.TaskCreationRequest;
 import com.adrian.taskmanager.user.User;
 import com.adrian.taskmanager.user.UserNotFoundException;
 
@@ -32,13 +33,14 @@ public class TaskService {
 		return taskOptional.get();
 	}
 	
-	public Task createTask(Task task, int userId) {
+	public Task createTask(TaskCreationRequest request, int userId) {
 		Optional<User> user = userRepository.findById(userId);
 		
 		if (user.isEmpty()) {
 			throw new UserNotFoundException("User with ID " + userId + " not found.");
-		} 
+		}
 		
+		Task task = new Task(request.getTitle(), request.getDescription());
 		task.setUser(user.get());
 		return taskRepository.save(task);
 	}

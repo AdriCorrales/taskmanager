@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.adrian.taskmanager.user.dto.UserCreationRequest;
+
 import jakarta.validation.Valid;
 
 @RestController
@@ -34,8 +36,8 @@ public class UserController {
 	
 	//POST /users
 	@PostMapping(path = "/users")
-	public User createUser(@Valid @RequestBody User user) {
-		return userService.save(user);
+	public User createUser(@Valid @RequestBody UserCreationRequest request) {
+		return userService.save(request);
 	}
 	
 	//DELETE /users/{id}

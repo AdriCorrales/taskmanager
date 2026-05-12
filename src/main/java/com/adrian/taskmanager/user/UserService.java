@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.adrian.taskmanager.jpa.UserRepository;
+import com.adrian.taskmanager.user.dto.UserCreationRequest;
 
 @Service
 public class UserService {
@@ -29,7 +30,8 @@ public class UserService {
 		return user.get();
     }
 
-    public User save(User user) {
+    public User save(UserCreationRequest request) {
+        User user = new User(request.getUsername(), request.getPassword());
         return userRepository.save(user);
     }
 

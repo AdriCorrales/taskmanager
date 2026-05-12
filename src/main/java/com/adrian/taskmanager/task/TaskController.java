@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.adrian.taskmanager.task.dto.TaskCreationRequest;
 import com.adrian.taskmanager.task.dto.TaskStatusUpdateRequest;
 
 import jakarta.validation.Valid;
@@ -33,8 +34,8 @@ public class TaskController {
 	}
 	
 	@PostMapping(path = "/users/{id}/tasks")
-	public Task createTask(@PathVariable int id, @Valid @RequestBody Task task) {
-		return taskService.createTask(task, id);
+	public Task createTask(@PathVariable int id, @Valid @RequestBody TaskCreationRequest request) {
+		return taskService.createTask(request, id);
 	}
 	
 	@DeleteMapping(path = "/tasks/{id}")
