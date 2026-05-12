@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.adrian.taskmanager.task.dto.TaskStatusUpdateRequest;
+
 import jakarta.validation.Valid;
 
 @RestController
@@ -53,5 +55,10 @@ public class TaskController {
 	@PutMapping(path = "/tasks/{id}")
 	public Task updateTaskById(@PathVariable int id, @Valid @RequestBody Task task) {
 		return taskService.updateTask(task, id);
+	}
+
+	@PutMapping("/tasks/{id}/status")
+	public Task updateTaskStatus(@PathVariable int id, @Valid @RequestBody TaskStatusUpdateRequest request) {
+		return taskService.updateTaskStatus(id, TaskStatus.valueOf(request.getStatus().trim().toUpperCase()));
 	}
 }

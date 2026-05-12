@@ -90,4 +90,17 @@ public class TaskService {
 		
 		return taskRepository.save(updatedTask);
 	}
+
+	public Task updateTaskStatus(int id, TaskStatus status) {
+		Optional<Task> existingTask = taskRepository.findById(id);
+		
+		if (existingTask.isEmpty()) {
+			throw new TaskNotFoundException("Task with ID " + id + " not found.");
+		}
+		
+		Task updatedTask = existingTask.get();
+		updatedTask.setStatus(status);
+		
+		return taskRepository.save(updatedTask);
+	}
 }
