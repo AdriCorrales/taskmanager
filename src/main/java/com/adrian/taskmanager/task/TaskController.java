@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adrian.taskmanager.task.dto.TaskCreationRequest;
+import com.adrian.taskmanager.task.dto.TaskCreationRequest;
 import com.adrian.taskmanager.task.dto.TaskStatusUpdateRequest;
+import com.adrian.taskmanager.task.dto.TaskUpdateRequest;
 
 import jakarta.validation.Valid;
 
@@ -54,8 +56,8 @@ public class TaskController {
 	}
 
 	@PutMapping(path = "/tasks/{id}")
-	public Task updateTaskById(@PathVariable int id, @Valid @RequestBody Task task) {
-		return taskService.updateTask(task, id);
+	public Task updateTaskById(@PathVariable int id, @Valid @RequestBody TaskUpdateRequest request) {
+		return taskService.updateTask(request, id);
 	}
 
 	@PutMapping("/tasks/{id}/status")

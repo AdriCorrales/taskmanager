@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.adrian.taskmanager.jpa.UserRepository;
 import com.adrian.taskmanager.user.dto.UserCreationRequest;
+import com.adrian.taskmanager.user.dto.UserUpdateRequest;
 
 @Service
 public class UserService {
@@ -42,7 +43,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User updateUser(User user, int id) {
+    public User updateUser(UserUpdateRequest request, int id) {
         Optional<User> existingUser = userRepository.findById(id);
         
         if (existingUser.isEmpty()) {
@@ -50,11 +51,11 @@ public class UserService {
         }
         
         User updatedUser = existingUser.get();
-        if (user.getUsername() != null) {
-            updatedUser.setUsername(user.getUsername());
+        if (request.getUsername() != null) {
+            updatedUser.setUsername(request.getUsername());
         }
-        if (user.getPassword() != null) {
-            updatedUser.setPassword(user.getPassword());
+        if (request.getPassword() != null) {
+            updatedUser.setPassword(request.getPassword());
         }
         
         return userRepository.save(updatedUser);

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.adrian.taskmanager.jpa.TaskRepository;
 import com.adrian.taskmanager.jpa.UserRepository;
 import com.adrian.taskmanager.task.dto.TaskCreationRequest;
+import com.adrian.taskmanager.task.dto.TaskUpdateRequest;
 import com.adrian.taskmanager.user.User;
 import com.adrian.taskmanager.user.UserNotFoundException;
 
@@ -72,7 +73,7 @@ public class TaskService {
 		return task.get();
 	}
 
-	public Task updateTask(Task task, int id) {
+	public Task updateTask(TaskUpdateRequest request, int id) {
 		Optional<Task> existingTask = taskRepository.findById(id);
 		
 		if (existingTask.isEmpty()) {
@@ -80,14 +81,14 @@ public class TaskService {
 		}
 		
 		Task updatedTask = existingTask.get();
-		if (task.getTitle() != null) {
-			updatedTask.setTitle(task.getTitle());
+		if (request.getTitle() != null) {
+			updatedTask.setTitle(request.getTitle());
 		}
-		if (task.getDescription() != null) {
-			updatedTask.setDescription(task.getDescription());
+		if (request.getDescription() != null) {
+			updatedTask.setDescription(request.getDescription());
 		}
-		if (task.getStatus() != null) {
-			updatedTask.setStatus(task.getStatus());
+		if (request.getStatus() != null) {
+			updatedTask.setStatus(TaskStatus.valueOf(request.getStatus().trim().toUpperCase()));
 		}
 		
 		return taskRepository.save(updatedTask);

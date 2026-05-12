@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adrian.taskmanager.user.dto.UserCreationRequest;
+import com.adrian.taskmanager.user.dto.UserUpdateRequest;
 
 import jakarta.validation.Valid;
 
@@ -48,7 +49,7 @@ public class UserController {
 	
 	//PUT /users/{id}
 	@PutMapping(path = "/users/{id}")
-	public User updateUser(@PathVariable int id, @Valid @RequestBody User user) {
-		return userService.updateUser(user, id);
+	public User updateUser(@PathVariable int id, @Valid @RequestBody UserUpdateRequest request) {
+		return userService.updateUser(request, id);
 	}
 }
